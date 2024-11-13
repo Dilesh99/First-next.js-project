@@ -71,6 +71,24 @@
       "phoneNumber": "0771604678",
       "address": "02, gampaha",
       "role": "USER"
+    },
+    {
+      "id": "48bd",
+      "username": "ash",
+      "password": "12",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "02, gampaha",
+      "role": "USER"
+    },
+    {
+      "id": "3207",
+      "username": "mn",
+      "password": "12",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "Kandy",
+      "role": "USER"
     }
   ],
   "sellers": [
@@ -132,6 +150,15 @@
       "email": "a@gmail.com",
       "phoneNumber": "0771604678",
       "company": "wag",
+      "role": "SELLER"
+    },
+    {
+      "id": "3c5c",
+      "username": "kk",
+      "password": "12",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "company": "nn",
       "role": "SELLER"
     }
   ]
