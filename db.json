@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "id": "fa83",
+      "email": "123@email.com",
+      "phoneNumber": "32121",
+      "company": "abc",
+      "password": "123"
+    },
+    {
+      "id": "24c8",
+      "email": "123@email.com",
+      "phoneNumber": "32121",
+      "company": "abc",
+      "password": "123"
+    },
+    {
+      "id": "a30c",
+      "username": "ash",
+      "password": "123",
+      "email": "",
+      "phoneNumber": "",
+      "address": "",
+      "role": "USER"
+    },
+    {
+      "id": "796c",
+      "email": "a@gmail.com",
+      "phoneNumber": "125564",
+      "company": "csx",
+      "password": "12"
+    },
+    {
+      "id": "04c5",
+      "email": "a@gmail.com",
+      "phoneNumber": "21354",
+      "password": "123"
+    },
+    {
+      "id": "dab2",
+      "username": "dg",
+      "password": "123",
+      "email": "a@gmail.com",
+      "phoneNumber": "2184684",
+      "address": "Kandy",
+      "role": "USER"
+    },
+    {
+      "id": "994f",
+      "username": "x",
+      "password": "x",
+      "email": "x@gmail.com",
+      "phoneNumber": "w",
+      "address": "dw",
+      "role": "USER"
+    }
+  ],
+  "sellers": [
+    {
+      "id": "0560",
+      "username": "ash",
+      "email": "",
+      "phoneNumber": "",
+      "company": "",
+      "role": "SELLER"
+    },
+    {
+      "id": "96c6",
+      "username": "ash",
+      "email": "",
+      "phoneNumber": "",
+      "company": "",
+      "role": "SELLER"
+    },
+    {
+      "id": "e6d2",
+      "username": "q",
+      "password": "123",
+      "email": "a@gmail.com",
+      "phoneNumber": "2184684",
+      "role": "SELLER"
+    },
+    {
+      "id": "d249",
+      "username": "b",
+      "password": "123",
+      "email": "a@gmail.com",
+      "phoneNumber": "2184684",
+      "company": "nn",
+      "role": "SELLER"
+    },
+    {
+      "id": "e6c7",
+      "username": "v",
+      "password": "v",
+      "email": "v@gmail.com",
+      "phoneNumber": "dwdq",
+      "company": "c",
+      "role": "SELLER"
+    },
+    {
+      "id": "a0e0",
+      "username": "z",
+      "password": "1",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604612",
+      "company": "sd",
+      "role": "SELLER"
+    }
+  ]
+}
