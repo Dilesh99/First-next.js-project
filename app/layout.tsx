@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import Head from 'next/head';
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,10 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <Head>
+      <head>
         <title>Heritage Link</title>
         <link rel="icon" href="/favicon.png" />
-      </Head>
+      </head>
       <body>
         {shouldRenderHeaderFooter && <Navbar />}
         <main>{children}</main>
