@@ -26,7 +26,7 @@ const LoginPage = () => {
       if (user) {
         // If user found, redirect based on role
         if (role === 'user') {
-          router.push('/'); // Redirect to User Dashboard (adjust as needed)
+          router.push('/home'); // Redirect to User Dashboard (adjust as needed)
         } else {
           router.push('/dashboard'); // Redirect to Seller Dashboard (adjust as needed)
         }
@@ -82,7 +82,7 @@ const LoginPage = () => {
                   SELLER
                 </button>
               </a>
-              <a href="/userlogin">
+              <a href="/">
                 <button
                   onClick={() => setSelectedRole('USER')}
                   className={`${

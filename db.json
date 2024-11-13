@@ -53,6 +53,24 @@
       "phoneNumber": "w",
       "address": "dw",
       "role": "USER"
+    },
+    {
+      "id": "a51e",
+      "username": "as",
+      "password": "1",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "02, gampaha",
+      "role": "USER"
+    },
+    {
+      "id": "0041",
+      "username": "r",
+      "password": "r",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "02, gampaha",
+      "role": "USER"
     }
   ],
   "sellers": [
@@ -105,6 +123,15 @@
       "email": "a@gmail.com",
       "phoneNumber": "0771604612",
       "company": "sd",
+      "role": "SELLER"
+    },
+    {
+      "id": "d544",
+      "username": "b",
+      "password": "b",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "company": "wag",
       "role": "SELLER"
     }
   ]

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         
         {/* Left Section: Navigation Links */}
         <div className="flex flex-col space-y-4 text-sm">
-          <Link href="/" legacyBehavior>
+          <Link href="/home" legacyBehavior>
             <a>HOME</a>
           </Link>
           <Link href="/museum" legacyBehavior>
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <Link href="/market" legacyBehavior>
             <a>MARKETPLACE</a>
           </Link>
-          <Link href="/contact" legacyBehavior>
+          <Link href="#" legacyBehavior>
             <a>CONTACT US</a>
           </Link>
         </div>

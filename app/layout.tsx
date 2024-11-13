@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
 
   // Routes without header and footer
-  const noHeaderFooterRoutes = ['/userlogin', '/sellerlogin', '/userregister', '/sellerregistration'];
+  const noHeaderFooterRoutes = ['/', '/sellerlogin', '/userregister', '/sellerregistration'];
   const shouldRenderHeaderFooter = !noHeaderFooterRoutes.includes(pathname);
 
   return (
