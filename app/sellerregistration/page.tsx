@@ -132,7 +132,7 @@ const RegisterPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 sm:p-8">
-      <div className="w-full max-w-md md:max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row-reverse h-auto md:h-[75vh]">
+      <div className="w-full max-w-md md:max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row-reverse h-auto md:h-[78vh]">
         <div className="w-full h-48 md:h-auto relative md:w-1/2">
           <Image
             src="/img/sigiriya1.jpg"
