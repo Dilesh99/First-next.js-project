@@ -3,10 +3,10 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { username, password, email, phoneNumber, address, role } = data;
+    const { username, password, email, phoneNumber, address, role, company } = data;
 
     // Validate required fields based on role
-    if (!username || !password || !email || !phoneNumber || (role === 'USER' && !address) || (role === 'SELLER' && !data.company)) {
+    if (!username || !password || !email || !phoneNumber || (role === 'USER' && !address) || (role === 'SELLER' && !company)) {
       return NextResponse.json({ message: 'Please fill in all required fields.' }, { status: 400 });
     }
 
@@ -16,29 +16,39 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Phone number must be 10 digits and contain only numbers.' }, { status: 400 });
     }
 
-    // Read the current data from db.json (or fetch it from JSON Server if it's hosted)
-    const res = await fetch('http://localhost:5000/' + (role === 'SELLER' ? 'sellers' : 'users'));
+    // Determine the API URL based on the environment
+    const apiUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:5000'
+        : process.env.PROD_API_URL;  // External API endpoint in production
+
+    // Fetch current data from the appropriate endpoint
+    const res = await fetch(`${apiUrl}/${role}s`);
     if (!res.ok) {
       return NextResponse.json({ message: 'Failed to fetch current data from server' }, { status: 500 });
     }
+
     const currentData = await res.json();
 
-    // Generate a new user object
+    // Check if the username already exists
+    const existingUser = currentData.find((user: any) => user.username === username);
+    if (existingUser) {
+      return NextResponse.json({ message: 'Username already taken.' }, { status: 400 });
+    }
+
+    // Create the new user object
     const newUser = {
       username,
-      password,
+      password, // Be sure to hash passwords in production for security
       email,
       phoneNumber,
       address: role === 'USER' ? address : undefined,
-      company: role === 'SELLER' ? data.company : undefined,
+      company: role === 'SELLER' ? company : undefined,
       role,
     };
 
-    // Add the new user to the array
-    const updatedData = [...currentData, newUser];
-
-    // Send the updated data back to JSON Server to be stored in db.json
-    const postRes = await fetch('http://localhost:5000/' + (role === 'SELLER' ? 'sellers' : 'users'), {
+    // Send the new user data to the server
+    const postRes = await fetch(`${apiUrl}/${role}s`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
