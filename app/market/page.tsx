@@ -5,12 +5,12 @@ const Market = () => {
     <div className="min-h-screen bg-cream flex flex-col">
       {/* Header with Search Bar */}
       <header className="flex justify-between items-center p-4 bg-[#e6d1c7] shadow-md">
-        {/* Header code here... */}
+        {/* Header content here... */}
       </header>
 
       <main className="flex-1 p-5">
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 ml-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 sm:ml-15 mx-auto ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-8 mx-auto px-4">
           {/* Example of a Product Card */}
           <ProductCard
             imageUrl="/img/rec 2.jpg" // Replace with your image path

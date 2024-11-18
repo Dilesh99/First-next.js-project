@@ -147,7 +147,7 @@ const Navbar: NextPage = () => {
               MARKET
             </a>
             <a
-              href="/protect"
+              href="https://en.wikipedia.org/wiki/List_of_World_Heritage_Sites_in_Sri_Lanka"
               className={`hover:text-gray-300 ${isActiveLink('/protect') ? 'text-gray-400' : ''}`}
             >
               PROTECT
@@ -163,11 +163,6 @@ const Navbar: NextPage = () => {
               className={`border border-white px-2 py-1 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
             >
               LOGOUT
-            </button>
-            <button
-              className={`px-2 py-1 rounded-md ${isHovered ? 'bg-secondary border border-white text-white' : 'bg-rose-400 text-white'}`}
-            >
-              LINK
             </button>
           </div>
         </div>
