@@ -89,6 +89,24 @@
       "phoneNumber": "0771604678",
       "address": "Kandy",
       "role": "USER"
+    },
+    {
+      "id": "ae85",
+      "username": "qw",
+      "password": "123",
+      "email": "gayashandile@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "qw",
+      "role": "USER"
+    },
+    {
+      "id": "87d5",
+      "username": "r",
+      "password": "r",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "r",
+      "role": "USER"
     }
   ],
   "sellers": [
@@ -159,6 +177,15 @@
       "email": "a@gmail.com",
       "phoneNumber": "0771604678",
       "company": "nn",
+      "role": "SELLER"
+    },
+    {
+      "id": "50eb",
+      "username": "as",
+      "password": "123",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "company": "as",
       "role": "SELLER"
     }
   ]
