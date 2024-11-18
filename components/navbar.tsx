@@ -19,6 +19,20 @@ const Navbar: NextPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Close sidebar when scrolling
+    const handleScroll = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen]);
+
   const handleLogout = () => {
     // Remove the user data from localStorage on logout
     localStorage.removeItem('user');
@@ -69,14 +83,14 @@ const Navbar: NextPage = () => {
               PROTECT
             </a>
             <div className="flex -space-x-3 ml-4">
-                <button
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  onClick={handleLogout}
-                  className={`border border-white px-4 py-2 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
-                >
-                  LOGOUT
-                </button>
+              <button
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                onClick={handleLogout}
+                className={`border border-white px-4 py-2 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
+              >
+                LOGOUT
+              </button>
               <button
                 className={`px-4 py-2 rounded-md ${isHovered ? 'bg-secondary border border-white text-white' : 'bg-rose-400 text-white'}`}
               >
@@ -115,25 +129,25 @@ const Navbar: NextPage = () => {
           {/* Navigation Links in Sidebar */}
           <div className="flex flex-col items-start space-y-4 text-sm font-semibold tracking-wide mt-8">
             <a
-              href="#"
-              className={`hover:text-gray-300 ${isActiveLink('/') ? 'text-gray-400' : ''}`}
+              href="/home"
+              className={`hover:text-gray-300 ${isActiveLink('/home') ? 'text-gray-400' : ''}`}
             >
               HOME
             </a>
             <a
-              href="#"
+              href="/museum"
               className={`hover:text-gray-300 ${isActiveLink('/museum') ? 'text-gray-400' : ''}`}
             >
               MUSEUM
             </a>
             <a
-              href="#"
+              href="/market"
               className={`hover:text-gray-300 ${isActiveLink('/market') ? 'text-gray-400' : ''}`}
             >
               MARKET
             </a>
             <a
-              href="#"
+              href="/protect"
               className={`hover:text-gray-300 ${isActiveLink('/protect') ? 'text-gray-400' : ''}`}
             >
               PROTECT
@@ -141,19 +155,17 @@ const Navbar: NextPage = () => {
           </div>
 
           {/* Login and Link Buttons at the Bottom of Sidebar */}
-          <div className="flex justify-between space-x-1 mt-6">
-            
-              <button
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                onClick={handleLogout}
-                className={`border border-white px-3 py-2 rounded-md ${isHovered ? 'bg-rose-400' : ':bg-secondary'}`}
-              >
-                LOGOUT
-              </button>
-          
+          <div className="flex justify-between -space-x-6 mt-4">
             <button
-              className={`px-4 py-2 rounded-md ${isHovered ? 'bg-secondary border border-white text-white' : 'bg-rose-400 text-white'}`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={handleLogout}
+              className={`border border-white px-2 py-1 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
+            >
+              LOGOUT
+            </button>
+            <button
+              className={`px-2 py-1 rounded-md ${isHovered ? 'bg-secondary border border-white text-white' : 'bg-rose-400 text-white'}`}
             >
               LINK
             </button>
