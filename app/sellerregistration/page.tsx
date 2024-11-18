@@ -3,6 +3,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Define the type for form errors
+type ErrorState = {
+  username?: string;
+  password?: string;
+  confirmPassword?: string;
+  email?: string;
+  phoneNumber?: string;
+  company?: string;
+};
+
 const RegisterPage = () => {
   const [selectedRole, setSelectedRole] = useState<'SELLER' | 'USER'>('SELLER');
   const [formStep, setFormStep] = useState(0);
@@ -14,14 +24,9 @@ const RegisterPage = () => {
     phoneNumber: '',
     company: '',  // Added for seller registration
   });
-  const [errors, setErrors] = useState({
-    username: '',
-    password: '',
-    confirmPassword: '',
-    email: '',
-    phoneNumber: '',
-    company: '',  // Added for seller registration
-  });
+  
+  // Initialize errors state with the ErrorState type
+  const [errors, setErrors] = useState<ErrorState>({});
 
   // Regular expression for phone number validation (10 digits)
   const phoneNumberRegex = /^\d{10}$/;
@@ -67,7 +72,7 @@ const RegisterPage = () => {
     }
     
     setFormStep(prev => prev + 1);
-    setErrors({});
+    setErrors({ });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -107,6 +107,15 @@
       "phoneNumber": "0771604678",
       "address": "r",
       "role": "USER"
+    },
+    {
+      "id": "31c6",
+      "username": "a",
+      "password": "aa",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "address": "a",
+      "role": "USER"
     }
   ],
   "sellers": [
@@ -186,6 +195,15 @@
       "email": "a@gmail.com",
       "phoneNumber": "0771604678",
       "company": "as",
+      "role": "SELLER"
+    },
+    {
+      "id": "f816",
+      "username": "c",
+      "password": "cc",
+      "email": "a@gmail.com",
+      "phoneNumber": "0771604678",
+      "company": "qq",
       "role": "SELLER"
     }
   ]
