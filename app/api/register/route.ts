@@ -1,60 +1,31 @@
+
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 
-// Type for user data
-interface User {
-  username: string;
-  password: string;
-  email: string;
-  phoneNumber: string;
-  address?: string;
-  company?: string;
-  role: 'USER' | 'SELLER';
-}
-
-interface DbData {
-  users: User[];
-  sellers: User[];
-}
-
-// GET method: Fetch users
-export async function GET() {
-  try {
-    // Path to the db.json file
-    const dbPath = path.join(process.cwd(), 'public', 'db.json');
-    const data = fs.readFileSync(dbPath, 'utf-8');
-    const jsonData: DbData = JSON.parse(data); // Type the JSON data to match DbData structure
-    return NextResponse.json(jsonData.users); // Returning the users array
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return NextResponse.json({ message: 'Failed to retrieve data.' }, { status: 500 });
-  }
-}
-
-// POST method: Register a new user
 export async function POST(request: Request) {
   try {
-    const data: User = await request.json();
+    const data = await request.json();
     const { username, password, email, phoneNumber, address, role } = data;
 
-    // Validate required fields
+    // Validate required fields based on role
     if (!username || !password || !email || !phoneNumber || (role === 'USER' && !address) || (role === 'SELLER' && !data.company)) {
       return NextResponse.json({ message: 'Please fill in all required fields.' }, { status: 400 });
     }
 
-    // Validate phone number
+    // Validate phone number: it should be exactly 10 digits
     const phoneNumberRegex = /^[0-9]{10}$/;
     if (!phoneNumberRegex.test(phoneNumber)) {
       return NextResponse.json({ message: 'Phone number must be 10 digits and contain only numbers.' }, { status: 400 });
     }
 
-    // Read the current data from db.json
-    const dbPath = path.join(process.cwd(), 'public', 'db.json');
-    const currentData: DbData = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+    // Read the current data from db.json (or fetch it from JSON Server if it's hosted)
+    const res = await fetch('http://localhost:5000/' + (role === 'SELLER' ? 'sellers' : 'users'));
+    if (!res.ok) {
+      return NextResponse.json({ message: 'Failed to fetch current data from server' }, { status: 500 });
+    }
+    const currentData = await res.json();
 
-    // Generate new user
-    const newUser: User = {
+    // Generate a new user object
+    const newUser = {
       username,
       password,
       email,
@@ -65,12 +36,22 @@ export async function POST(request: Request) {
     };
 
     // Add the new user to the array
-    const updatedData = { ...currentData, users: [...currentData.users, newUser] };
+    const updatedData = [...currentData, newUser];
 
-    // Write the updated data back to db.json
-    fs.writeFileSync(dbPath, JSON.stringify(updatedData, null, 2));
+    // Send the updated data back to JSON Server to be stored in db.json
+    const postRes = await fetch('http://localhost:5000/' + (role === 'SELLER' ? 'sellers' : 'users'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    });
 
-    return NextResponse.json({ message: 'Registration successful!' });
+    if (!postRes.ok) {
+      return NextResponse.json({ message: 'Failed to register user, please try again later.' }, { status: 500 });
+    }
+
+    return NextResponse.json({ message: 'Registration successful, redirecting to login page' });
   } catch (error) {
     console.error('Error during registration:', error);
     return NextResponse.json({ message: 'An error occurred during registration.' }, { status: 500 });
