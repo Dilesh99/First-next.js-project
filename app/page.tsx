@@ -1,158 +1,89 @@
-"use client";
 import Image from 'next/image';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import type { NextPage } from 'next';
+import Navbar from '@/components/navbar';
 
-const LoginPage = () => {
-  const [selectedRole, setSelectedRole] = useState('USER');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const router = useRouter();
-
-  // Authentication function
-  const authenticateUser = async () => {
-    const role = selectedRole.toLowerCase();
-    const url = `http://localhost:5000/${role}s`; // Adjust the endpoint based on role (users or sellers)
-
-    try {
-      const response = await fetch(url);
-      const users = await response.json();
-
-      const user = users.find(
-        (user: any) => user.username === username && user.password === password
-      );
-
-      if (user) {
-        // If user found, redirect based on role
-        if (role === 'user') {
-          router.push('/home'); // Redirect to User Dashboard (adjust as needed)
-        } else {
-          router.push('/dashboard'); // Redirect to Seller Dashboard (adjust as needed)
-        }
-      } else {
-        setErrorMessage('Invalid username or password');
-      }
-    } catch (error) {
-      setErrorMessage('Failed to authenticate. Please try again.');
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMessage('');
-    authenticateUser();
-  };
-
+const Home: NextPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 sm:p-8">
-      <div className="w-full max-w-md md:max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row h-auto md:h-[70vh]">
-        {/* Image Section */}
-        <div className="w-full h-48 md:h-auto relative md:w-1/2">
+    <div>
+      <section className="bg-primary text-white p-px">
+        <div className="flex flex-col lg:flex-row items-center justify-between lg:m-20 m-10">
+          {/* Heading and Image in a Row */}
+          <h2 className="text-3xl lg:text-6xl font-bold mb-6 lg:mt-10 text-center lg:text-left">
+            WHO WE ARE?
+          </h2>
           <Image
-            src="/img/sigiriya3.jpg"
-            alt="Heritage"
-            layout="fill"
-            objectFit="cover"
-            className="absolute inset-0 object-cover md:hidden"
-          />
-          <Image
-            src="/img/sigiriya3.jpg"
-            alt="Heritage"
-            layout="fill"
-            objectFit="cover"
-            className="absolute inset-0 object-cover hidden md:block"
-            style={{
-              clipPath: "polygon(0 0, 100% 0, 90% 100%, 0% 100%)",
-            }}
+            src="/img/heritage.jpg"
+            alt="Heritage Image"
+            width={800}
+            height={500}
+            className="rounded w-full lg:w-auto"
           />
         </div>
 
-        {/* Login Form */}
-        <div className="md:w-1/2 w-full p-4 md:p-10 flex flex-col justify-center items-center">
-          <div className="w-full max-w-sm">
-            <div className="flex justify-center mb-4 sm:mb-6 space-x-2">
-              <a href="/sellerlogin">
-                <button
-                  onClick={() => setSelectedRole('SELLER')}
-                  className={`${
-                    selectedRole === 'SELLER' ? 'bg-herit text-white' : 'text-herit'
-                  } py-2 px-3 sm:px-4 rounded-md bg-cream transition-colors duration-300`}
-                >
-                  SELLER
-                </button>
-              </a>
-              <a href="/">
-                <button
-                  onClick={() => setSelectedRole('USER')}
-                  className={`${
-                    selectedRole === 'USER' ? 'bg-herit text-white' : 'text-herit'
-                  } py-2 px-3 sm:px-4 rounded-md shadow-md bg-cream transition-colors duration-300 -translate-x-3 sm:-translate-x-6`}
-                >
-                  USER
-                </button>
-              </a>
-            </div>
+        {/* Centered Paragraph */}
+        <p className="lg:m-20 mx-4 my-10 text-justify text-lg lg:text-2xl font-semibold">
+          HeritageLink Sri Lanka is a dedicated platform committed to preserving and
+          celebrating the rich cultural heritage of Sri Lanka. In a rapidly modernizing world,
+          our mission is to bridge the gap between tradition and the present by connecting
+          artisans, historians, and the public. We offer an online marketplace where traditional
+          craftsmen can showcase and sell their unique creations, ensuring that ancient crafts
+          are passed down to future generations.
+        </p>
+      </section>
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-right text-herit">Heritage Link</h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-right text-red-800 mb-3 sm:mb-5">User Login</p>
+      {/* ATTENTION Section */}
+      <section className="w-full bg-white p-6 lg:p-10 text-gray-900">
+        <h2 className="text-4xl lg:text-5xl lg:mb-14 font-bold text-primary mb-8 text-center">ATTENTION!</h2>
 
-            {/* Error Message */}
-            {errorMessage && (
-              <p className="text-red-500 text-sm text-center mb-3">{errorMessage}</p>
-            )}
-
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="font-semibold mb-1 sm:mb-2 text-herit">Username</label>
-                <input
-                  type="text"
-                  className="w-full px-2 sm:px-3 py-3 sm:py-4 text-herit font-semibold border-green-50 bg-cream rounded focus:outline-none focus:border-herit focus:ring-2 focus:ring-herit"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="mb-4">
-                <label className="font-semibold mb-1 sm:mb-2 text-herit">Password</label>
-                <input
-                  type="password"
-                  className="w-full px-2 sm:px-3 py-3 sm:py-4 text-herit font-semibold border-green-50 bg-cream rounded focus:outline-none focus:border-herit focus:ring-2 focus:ring-herit"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              <div className="flex sm:flex-row justify-between items-center mb-4 sm:mb-6">
-                <div className="flex space-x-2 mb-4 sm:mb-0">
-                  <button className="bg-white rounded-full p-1 sm:p-2 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <Image src="/img/google.png" alt="Google" width={20} height={20} />
-                  </button>
-                  <button className="bg-white rounded-full p-1 sm:p-2 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <Image src="/img/facebook.png" alt="Facebook" width={20} height={20} />
-                  </button>
-                </div>
-                <button
-                  type="submit"
-                  className="py-2 px-3 sm:px-4 rounded-md bg-herit text-white hover:bg-opacity-80 transition-colors duration-300"
-                >
-                  LOGIN
-                </button>
-              </div>
-            </form>
-
-            <div className="text-center mt-4">
-              <p>
-                If you don't have an account,{' '}
-                <a href="/userregister" className="text-primary font-semibold hover:underline">
-                  please register here
-                </a>
-              </p>
-            </div>
-          </div>
+        {/* Yapahuwa Section */}
+        <div className="flex flex-col lg:flex-row items-center lg:space-x-6 my-6">
+          <Image
+            src="/img/yapahuwa.jpg"
+            alt="Yapahuwa Image"
+            width={500}
+            height={350}
+            className="w-full lg:w-auto"
+          />
+          <p className="lg:p-16 p-4 text-lg lg:text-2xl font-semibold text-justify">
+            Yapahuwa, an ancient rock fortress in Sri Lanka, was once the island's capital in
+            the 13th century. Its iconic stone stairway leads to the ruins of a royal palace,
+            showcasing the rich history and architectural brilliance of the era.
+          </p>
         </div>
-      </div>
+        <div className="text-center lg:text-right mt-4 lg:-mt-20 lg:mr-20 lg:mb-14">
+          <a href="https://en.wikipedia.org/wiki/Yapahuwa">
+            <button className="bg-primary text-white font-semibold text-lg lg:text-xl py-2 lg:py-3 px-6 lg:px-10 rounded-md">
+              MORE
+            </button>
+          </a>
+        </div>
+
+        {/* Sigiriya Section */}
+        <div className="flex flex-col-reverse lg:flex-row items-center lg:space-x-6 my-6">
+          <p className="lg:p-16 p-4 text-lg lg:text-2xl font-semibold text-justify">
+            Sigiriya, a UNESCO World Heritage site, is a towering rock fortress in Sri Lanka,
+            known for its stunning frescoes and the ancient ruin of a royal palace. Built in the
+            5th century, it stands as a testament to the island's rich history and architectural
+            ingenuity.
+          </p>
+          <Image
+            src="/img/sigiriya.jpg"
+            alt="Sigiriya Image"
+            width={500}
+            height={350}
+            className="w-full lg:w-auto"
+          />
+        </div>
+        <div className="text-center lg:text-left mt-4 lg:-mt-16 lg:ml-20">
+          <a href="https://en.wikipedia.org/wiki/Sigiriya">
+            <button className="bg-primary text-white font-semibold text-lg lg:text-xl py-2 lg:py-3 px-6 lg:px-10 rounded-md">
+              MORE
+            </button>
+          </a>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default LoginPage;
+export default Home;

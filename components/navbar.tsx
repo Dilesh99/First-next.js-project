@@ -129,8 +129,8 @@ const Navbar: NextPage = () => {
           {/* Navigation Links in Sidebar */}
           <div className="flex flex-col items-start space-y-4 text-sm font-semibold tracking-wide mt-8">
             <a
-              href="/home"
-              className={`hover:text-gray-300 ${isActiveLink('/home') ? 'text-gray-400' : ''}`}
+              href="/"
+              className={`hover:text-gray-300 ${isActiveLink('/') ? 'text-gray-400' : ''}`}
             >
               HOME
             </a>
