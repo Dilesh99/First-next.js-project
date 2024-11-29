@@ -59,7 +59,7 @@ const Navbar: NextPage = () => {
           {/* Desktop Navigation Links and Buttons */}
           <div className="hidden md:flex md:space-x-8 md:items-center text-sm font-semibold tracking-wide">
             <a
-              href="/home"
+              href="/"
               className={`hover:text-gray-300 ${isActiveLink('/') ? 'text-gray-400' : ''}`}
             >
               HOME
@@ -89,7 +89,7 @@ const Navbar: NextPage = () => {
                 onClick={handleLogout}
                 className={`border border-white px-4 py-2 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
               >
-                LOGOUT
+                LOGIN
               </button>
               <button
                 className={`px-4 py-2 rounded-md ${isHovered ? 'bg-secondary border border-white text-white' : 'bg-rose-400 text-white'}`}
@@ -162,7 +162,7 @@ const Navbar: NextPage = () => {
               onClick={handleLogout}
               className={`border border-white px-2 py-1 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
             >
-              LOGOUT
+              LOGIN
             </button>
           </div>
         </div>
