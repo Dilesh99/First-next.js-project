@@ -124,7 +124,7 @@ const RegisterPage = () => {
 
     if (response.ok) {
       alert(data.message);
-      window.location.href = '/'; 
+      window.location.href = '/userlogin'; 
     } else {
       alert('Registration failed. Please try again later.');
     }
@@ -271,7 +271,7 @@ const RegisterPage = () => {
             <div className="ml-5 text-left">
               <p className="text-sm text-gray-600">
                 If you have an account,{" "}
-                <Link href="/"  legacyBehavior>
+                <Link href="/userlogin"  legacyBehavior>
                   <a className="text-herit font-semibold hover:text-opacity-80 transition-colors duration-300">Login here</a>
                 </Link>
               </p>

@@ -82,7 +82,7 @@ const LoginPage = () => {
                   SELLER
                 </button>
               </a>
-              <a href="/">
+              <a href="/userlogin">
                 <button
                   onClick={() => setSelectedRole('USER')}
                   className={`${

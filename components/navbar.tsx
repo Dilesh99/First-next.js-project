@@ -33,11 +33,8 @@ const Navbar: NextPage = () => {
     };
   }, [isOpen]);
 
-  const handleLogout = () => {
-    // Remove the user data from localStorage on logout
-    localStorage.removeItem('user');
-    setIsLoggedIn(false);
-    router.push('/'); // Redirect to login page
+  const handleLogin = () => {
+    router.push('/userlogin'); // Redirect to login page
   };
 
   const isActiveLink = (path: string) => pathname === path;
@@ -86,7 +83,7 @@ const Navbar: NextPage = () => {
               <button
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                onClick={handleLogout}
+                onClick={handleLogin}
                 className={`border border-white px-4 py-2 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
               >
                 LOGIN
@@ -159,7 +156,7 @@ const Navbar: NextPage = () => {
             <button
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              onClick={handleLogout}
+              onClick={handleLogin}
               className={`border border-white px-2 py-1 rounded-md ${isHovered ? 'bg-rose-400' : 'bg-secondary'}`}
             >
               LOGIN
