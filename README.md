@@ -2,17 +2,20 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Installation
+
+Install the project dependencies using npm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
+Running the Project:
+
+```bash
+npm run json-server
+npm run dev
+```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
